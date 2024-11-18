@@ -23,8 +23,8 @@ def timing_log_fn(epoch, total_loss, correct, losses):
         timing_stats["last_epoch_time"] = current_time
         time_per_epoch = 0
     else:
-        # Calculate time for this epoch
-        time_per_epoch = current_time - timing_stats["last_epoch_time"]
+        # Calculate time for this epoch and divide by BATCH size (10)
+        time_per_epoch = (current_time - timing_stats["last_epoch_time"]) / 10
         timing_stats["epoch_times"].append(time_per_epoch)
         timing_stats["last_epoch_time"] = current_time
 
