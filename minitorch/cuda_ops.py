@@ -503,7 +503,55 @@ def _tensor_matrix_multiply(
     #    b) Copy into shared memory for b matrix
     #    c) Compute the dot produce for position c[i, j]
     # TODO: Implement for Task 3.4.
-    raise NotImplementedError("Need to implement for Task 3.4")
+    # Initialize accumulator for dot product
+    acc = 0.0
+
+    # Get matrix dimensions
+    M = out_shape[1]  # Rows of output/a
+    N = out_shape[2]  # Cols of output/b
+    K = a_shape[2]  # Cols of a / Rows of b
+
+    # Calculate batch offsets
+    a_batch_offset = batch * a_batch_stride
+    b_batch_offset = batch * b_batch_stride
+
+    # Check if this thread is within matrix bounds
+    if i < M and j < N:
+        # Process input matrices in BLOCK_DIM x BLOCK_DIM tiles
+        for tile_idx in range((K + BLOCK_DIM - 1) // BLOCK_DIM):
+            # Calculate current tile boundaries
+            k_start = tile_idx * BLOCK_DIM
+
+            # Load a tile from matrix A into shared memory
+            k_idx = k_start + pj
+            if k_idx < K and i < M:
+                a_idx = a_batch_offset + i * a_strides[1] + k_idx * a_strides[2]
+                a_shared[pi, pj] = a_storage[a_idx]
+            else:
+                a_shared[pi, pj] = 0.0
+
+            # Load a tile from matrix B into shared memory
+            k_idx = k_start + pi
+            if k_idx < K and j < N:
+                b_idx = b_batch_offset + k_idx * b_strides[1] + j * b_strides[2]
+                b_shared[pi, pj] = b_storage[b_idx]
+            else:
+                b_shared[pi, pj] = 0.0
+
+            # Wait for all threads to finish loading
+            cuda.syncthreads()
+
+            # Compute partial dot product for this tile
+            for k in range(min(BLOCK_DIM, K - k_start)):
+                acc += a_shared[pi, k] * b_shared[k, pj]
+
+            # Synchronize before loading next tile
+            cuda.syncthreads()
+
+        # Write final result to global memory
+        if i < M and j < N:
+            out_idx = batch * out_strides[0] + i * out_strides[1] + j * out_strides[2]
+            out[out_idx] = acc
 
 
 tensor_matrix_multiply = jit(_tensor_matrix_multiply)
