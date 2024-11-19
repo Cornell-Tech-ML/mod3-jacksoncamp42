@@ -524,4 +524,3 @@ None
 
 ### !python project/run_fast_tensor.py --BACKEND cpu --HIDDEN 200 --DATASET xor --RATE 0.05
 <img width="537" alt="Screenshot 2024-11-18 at 8 59 38 PM" src="https://github.com/user-attachments/assets/a4adde0e-821c-40ea-8913-a00faa1f5998">
-
