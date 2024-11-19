@@ -1,5 +1,6 @@
 ## Task 3.2
 ### Diagnostic Script
+```
 python project/parallel_check.py
 MAP
 
@@ -488,7 +489,7 @@ Parallel structure is already optimal.
 Allocation hoisting:
 No allocation hoisting found
 None
-
+```
 ## Task 3.4
 
 ============================================================
@@ -500,27 +501,37 @@ None
      512 |       958.38 ms |       217.57 ms |     4.40x
     1024 |          7.75 s |          1.23 s |     6.32x
 ============================================================
+<img width="1453" alt="Screenshot 2024-11-19 at 12 30 11 PM" src="https://github.com/user-attachments/assets/1d886697-3712-478b-bfcd-4b8364c22baf">
 
 ## Task 3.5
-
-### !python project/run_fast_tensor.py --BACKEND gpu --HIDDEN 100 --DATASET simple --RATE 0.05
+### Simple Dataset - GPU
+!python project/run_fast_tensor.py --BACKEND gpu --HIDDEN 100 --DATASET simple --RATE 0.05
 <img width="545" alt="Screenshot 2024-11-18 at 8 57 19 PM" src="https://github.com/user-attachments/assets/ae719e95-9f62-4ba5-8ea3-ef023c8a2752">
 
-
-### !python project/run_fast_tensor.py --BACKEND cpu --HIDDEN 100 --DATASET simple --RATE 0.05
+### Simple Dataset - CPU
+!python project/run_fast_tensor.py --BACKEND cpu --HIDDEN 100 --DATASET simple --RATE 0.05
 <img width="541" alt="Screenshot 2024-11-18 at 8 57 39 PM" src="https://github.com/user-attachments/assets/01edec0c-df5f-40ec-83ef-1bbf2243a3e0">
 
-### !python project/run_fast_tensor.py --BACKEND gpu --HIDDEN 100 --DATASET split --RATE 0.05
+### Split Dataset - GPU
+!python project/run_fast_tensor.py --BACKEND gpu --HIDDEN 100 --DATASET split --RATE 0.05
 <img width="537" alt="Screenshot 2024-11-18 at 8 58 12 PM" src="https://github.com/user-attachments/assets/4ecf91ec-5916-4a51-ba74-36a5e2dd6286">
 
-### !python project/run_fast_tensor.py --BACKEND cpu --HIDDEN 100 --DATASET split --RATE 0.05
+### Split Dataset - CPU
+!python project/run_fast_tensor.py --BACKEND cpu --HIDDEN 100 --DATASET split --RATE 0.05
 <img width="543" alt="Screenshot 2024-11-18 at 8 58 31 PM" src="https://github.com/user-attachments/assets/cbed8639-95bb-443d-ae65-bb4a63d29f06">
 
-### !python project/run_fast_tensor.py --BACKEND gpu --HIDDEN 100 --DATASET xor --RATE 0.05
+### XOR Dataset - GPU
+!python project/run_fast_tensor.py --BACKEND gpu --HIDDEN 100 --DATASET xor --RATE 0.05
 <img width="547" alt="Screenshot 2024-11-18 at 8 58 56 PM" src="https://github.com/user-attachments/assets/7702952b-fb7f-4953-9e75-16a2a9ac7e0e">
 
-### !python project/run_fast_tensor.py --BACKEND cpu --HIDDEN 100 --DATASET xor --RATE 0.05
+### XOR Dataset - CPU
+!python project/run_fast_tensor.py --BACKEND cpu --HIDDEN 100 --DATASET xor --RATE 0.05
 <img width="535" alt="Screenshot 2024-11-18 at 8 59 13 PM" src="https://github.com/user-attachments/assets/e1ebdf3c-b96f-4192-871f-e780983e148d">
 
-### !python project/run_fast_tensor.py --BACKEND cpu --HIDDEN 200 --DATASET xor --RATE 0.05
+### Big Model - XOR Dataset - CPU - 200 Layers
+!python project/run_fast_tensor.py --BACKEND cpu --HIDDEN 200 --DATASET xor --RATE 0.05
 <img width="537" alt="Screenshot 2024-11-18 at 8 59 38 PM" src="https://github.com/user-attachments/assets/a4adde0e-821c-40ea-8913-a00faa1f5998">
+
+### Big Model - XOR Dataset - GPU - 200 Layers
+!python project/run_fast_tensor.py --BACKEND gpu --HIDDEN 200 --DATASET xor --RATE 0.05
+<img width="541" alt="Screenshot 2024-11-19 at 12 51 28 PM" src="https://github.com/user-attachments/assets/066d9788-0f47-45c4-8ac7-4437c6306e8a">
