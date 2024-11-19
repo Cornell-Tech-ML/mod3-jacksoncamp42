@@ -190,15 +190,14 @@ class SimpleOps(TensorOps):
     def reduce(
         fn: Callable[[float, float], float], start: float = 0.0
     ) -> Callable[["Tensor", int], "Tensor"]:
-        """Higher-order tensor reduce function. ::
+        """Reduce function that applies a binary operation over a tensor.
 
         Args:
             fn: Function from two floats to float to apply.
-            start: Initial value for the reduction. This value is used as the starting point for the reduction operation.
-        {{ edit_1 }}
+            start: Initial value for the reduction.
 
         Returns:
-            :class:`TensorData` : new tensor
+            A callable that takes a tensor and a dimension to reduce over.
 
         """
         f = tensor_reduce(fn)
