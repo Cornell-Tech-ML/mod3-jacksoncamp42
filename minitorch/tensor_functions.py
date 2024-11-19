@@ -487,7 +487,7 @@ class Permute(Function):
         return a._new(a._tensor.permute(*[int(order[i]) for i in range(order.size)]))
 
     @staticmethod
-    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tuple, float]:
+    def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, float]:
         """Reverse the permutation to compute gradients."""
         order: Tensor = ctx.saved_values[0]
         order2: List[int] = [
@@ -496,6 +496,7 @@ class Permute(Function):
                 enumerate([order[i] for i in range(order.size)]), key=lambda a: a[1]
             )
         ]
+        # Return a tuple of (Tensor, float) instead of (Tuple, float)
         return grad_output._new(grad_output._tensor.permute(*order2)), 0.0
 
 
