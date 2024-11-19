@@ -41,7 +41,18 @@ class TensorOps:
     @staticmethod
     def reduce(
         fn: Callable[[float, float], float], start: float = 0.0
-    ) -> Callable[[Tensor, int], Tensor]: ...
+    ) -> Callable[["Tensor", int], "Tensor"]:
+        """Higher-order tensor reduce function. ::
+
+        Args:
+            fn: Function from two floats to float to apply.
+            start: Initial value for the reduction. This value is used as the starting point for the reduction operation.
+
+        Returns:
+            :class:`TensorData` : new tensor
+
+        """
+        ...
 
     @staticmethod
     def matrix_multiply(a: Tensor, b: Tensor) -> Tensor:
@@ -181,21 +192,10 @@ class SimpleOps(TensorOps):
     ) -> Callable[["Tensor", int], "Tensor"]:
         """Higher-order tensor reduce function. ::
 
-          fn_reduce = reduce(fn)
-          out = fn_reduce(a, dim)
-
-        Simple version ::
-
-            for j:
-                out[1, j] = start
-                for i:
-                    out[1, j] = fn(out[1, j], a[i, j])
-
-
         Args:
-            fn: function from two floats-to-float to apply
-            a (:class:`TensorData`): tensor to reduce over
-            dim (int): int of dim to reduce
+            fn: Function from two floats to float to apply.
+            start: Initial value for the reduction. This value is used as the starting point for the reduction operation.
+        {{ edit_1 }}
 
         Returns:
             :class:`TensorData` : new tensor
