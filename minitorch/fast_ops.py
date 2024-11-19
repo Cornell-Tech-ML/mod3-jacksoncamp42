@@ -35,10 +35,12 @@ def njit(fn: Fn, **kwargs: Any) -> Fn:
     """JIT compile a function with Numba.
 
     Args:
+    ----
         fn: The function to be compiled.
         **kwargs: Additional arguments for Numba's njit.
 
     Returns:
+    -------
         The JIT-compiled function.
 
     """

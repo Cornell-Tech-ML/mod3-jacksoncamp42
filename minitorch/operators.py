@@ -190,6 +190,7 @@ def reduce(
     -------
     Function that takes a list `ls` of elements
     $x_1 \ldots x_n$ and computes the reduction :math:`fn(x_3, fn(x_2, fn(x_1, x_0)))`
+
     """
 
     def _reduce(ls: Iterable[float]) -> float:

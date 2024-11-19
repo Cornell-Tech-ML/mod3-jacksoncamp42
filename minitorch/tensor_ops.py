@@ -45,10 +45,12 @@ class TensorOps:
         """Higher-order tensor reduce function. ::
 
         Args:
+        ----
             fn: Function from two floats to float to apply.
             start: Initial value for the reduction. This value is used as the starting point for the reduction operation.
 
         Returns:
+        -------
             :class:`TensorData` : new tensor
 
         """
@@ -68,10 +70,12 @@ class TensorBackend:
         that implements map, zip, and reduce higher-order functions.
 
         Args:
+        ----
             ops : tensor operations object see `tensor_ops.py`
 
 
         Returns:
+        -------
             A collection of tensor functions
 
         """
@@ -123,12 +127,14 @@ class SimpleOps(TensorOps):
                     out[i, j] = fn(a[i, 0])
 
         Args:
+        ----
             fn: function from float-to-float to apply.
             a (:class:`TensorData`): tensor to map over
             out (:class:`TensorData`): optional, tensor data to fill in,
                    should broadcast with `a`
 
         Returns:
+        -------
             new tensor data
 
         """
@@ -165,11 +171,13 @@ class SimpleOps(TensorOps):
 
 
         Args:
+        ----
             fn: function from two floats-to-float to apply
             a (:class:`TensorData`): tensor to zip over
             b (:class:`TensorData`): tensor to zip over
 
         Returns:
+        -------
             :class:`TensorData` : new tensor data
 
         """
@@ -193,10 +201,12 @@ class SimpleOps(TensorOps):
         """Reduce function that applies a binary operation over a tensor.
 
         Args:
+        ----
             fn: Function from two floats to float to apply.
             start: Initial value for the reduction.
 
         Returns:
+        -------
             A callable that takes a tensor and a dimension to reduce over.
 
         """
@@ -245,9 +255,11 @@ def tensor_map(
       broadcast. (`in_shape` must be smaller than `out_shape`).
 
     Args:
+    ----
         fn: function from float-to-float to apply
 
     Returns:
+    -------
         Tensor map function.
 
     """
@@ -293,9 +305,11 @@ def tensor_zip(
       and `b_shape` broadcast to `out_shape`.
 
     Args:
+    ----
         fn: function mapping two floats to float to apply
 
     Returns:
+    -------
         Tensor zip function.
 
     """
@@ -335,9 +349,11 @@ def tensor_reduce(
        except with `reduce_dim` turned to size `1`
 
     Args:
+    ----
         fn: reduction function mapping two floats to float
 
     Returns:
+    -------
         Tensor reduce function.
 
     """

@@ -69,10 +69,12 @@ class Neg(Function):
         """Apply negation to each element in the tensor.
 
         Args:
+        ----
             ctx: Context for saving values
             t1: Input tensor
 
         Returns:
+        -------
             Negated tensor
 
         """
@@ -83,10 +85,12 @@ class Neg(Function):
         """Take the gradient and apply negation.
 
         Args:
+        ----
             ctx: Context
             grad_output: Gradient from downstream
 
         Returns:
+        -------
             Negated gradient
 
         """
@@ -99,10 +103,12 @@ class Inv(Function):
         """Apply multiplicative inverse to each element in the tensor.
 
         Args:
+        ----
             ctx: Context for saving values
             t1: Input tensor
 
         Returns:
+        -------
             Inverted tensor
 
         """
@@ -114,10 +120,12 @@ class Inv(Function):
         """Compute the gradient of the inverse operation.
 
         Args:
+        ----
             ctx (Context): A context object containing saved values from the forward pass.
             grad_output (Tensor): The gradient of the output from the next layer.
 
         Returns:
+        -------
             Tensor: The gradient of the input tensor with respect to the inverse operation.
 
         """
@@ -316,6 +324,7 @@ def grad_central_difference(
     """Compute gradient approximation using central difference formula.
 
     Args:
+    ----
         f: Function to compute gradient for
         *vals: Input tensors
         arg: Which argument to compute gradient with respect to
@@ -323,6 +332,7 @@ def grad_central_difference(
         ind: Index at which to compute gradient
 
     Returns:
+    -------
         Approximate gradient value
 
     """

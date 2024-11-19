@@ -34,10 +34,12 @@ def device_jit(fn: Fn, **kwargs: Any) -> Fn:
     """JIT compile a function for execution on the device (GPU).
 
     Args:
+    ----
         fn: The function to be compiled.
         **kwargs: Additional arguments for the JIT compiler.
 
     Returns:
+    -------
         The JIT-compiled function.
 
     """
@@ -48,10 +50,12 @@ def jit(fn: Fn, **kwargs: Any) -> FakeCUDAKernel:
     """JIT compile a function for execution on the device (GPU).
 
     Args:
+    ----
         fn: The function to be compiled.
         **kwargs: Additional arguments for the JIT compiler.
 
     Returns:
+    -------
         The JIT-compiled function.
 
     """
@@ -91,9 +95,11 @@ class CudaOps(TensorOps):
         """Applies a function to pairs of elements from two tensors.
 
         Args:
+        ----
             fn: A function that takes two floats and returns a float.
 
         Returns:
+        -------
             A function that takes two tensors and returns a tensor.
 
         """
@@ -119,10 +125,12 @@ class CudaOps(TensorOps):
         """Applies a reduction function across a specified dimension of a tensor.
 
         Args:
+        ----
             fn: A function that takes two floats and returns a float.
             start: The initial value for the reduction.
 
         Returns:
+        -------
             A function that takes a tensor and a dimension index, returning a reduced tensor.
 
         """
@@ -149,10 +157,12 @@ class CudaOps(TensorOps):
         """Performs matrix multiplication on two tensors, ensuring they are treated as 3D tensors.
 
         Args:
+        ----
             a: The first tensor.
             b: The second tensor.
 
         Returns:
+        -------
             A tensor resulting from the matrix multiplication of `a` and `b`.
 
         """
@@ -347,9 +357,11 @@ def sum_practice(a: Tensor) -> TensorData:
     """Calculates the sum of elements in a tensor.
 
     Args:
+    ----
         a: The input tensor.
 
     Returns:
+    -------
         A TensorData object containing the sum of the elements.
 
     """
@@ -502,10 +514,12 @@ def mm_practice(a: Tensor, b: Tensor) -> TensorData:
     """Performs matrix multiplication on two tensors.
 
     Args:
+    ----
         a: The first tensor.
         b: The second tensor.
 
     Returns:
+    -------
         A TensorData object containing the result of the matrix multiplication.
 
     """

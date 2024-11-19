@@ -37,10 +37,12 @@ def index_to_position(index: Index, strides: Strides) -> int:
     storage based on strides.
 
     Args:
+    ----
         index : index tuple of ints
         strides : tensor strides
 
     Returns:
+    -------
         Position in storage
 
     """
@@ -57,6 +59,7 @@ def to_index(ordinal: int, shape: Shape, out_index: OutIndex) -> None:
     may not be the inverse of `index_to_position`.
 
     Args:
+    ----
         ordinal: ordinal position to convert.
         shape : tensor shape.
         out_index : return index corresponding to position.
@@ -79,12 +82,14 @@ def broadcast_index(
     removed.
 
     Args:
+    ----
         big_index : multidimensional index of bigger tensor
         big_shape : tensor shape of bigger tensor
         shape : tensor shape of smaller tensor
         out_index : multidimensional index of smaller tensor
 
     Returns:
+    -------
         None
 
     """
@@ -100,13 +105,16 @@ def shape_broadcast(shape1: UserShape, shape2: UserShape) -> UserShape:
     """Broadcast two shapes to create a new union shape.
 
     Args:
+    ----
         shape1 : first shape
         shape2 : second shape
 
     Returns:
+    -------
         broadcasted shape
 
     Raises:
+    ------
         IndexingError : if cannot broadcast
 
     """
@@ -181,7 +189,8 @@ class TensorData:
     def is_contiguous(self) -> bool:
         """Check that the layout is contiguous, i.e. outer dimensions have bigger strides than inner dimensions.
 
-        Returns:
+        Returns
+        -------
             bool : True if contiguous
 
         """
@@ -197,10 +206,12 @@ class TensorData:
         """Broadcast two shapes to create a new union shape.
 
         Args:
+        ----
             shape_a : first shape
             shape_b : second shape
 
         Returns:
+        -------
             UserShape: broadcasted shape
 
         """
@@ -210,9 +221,11 @@ class TensorData:
         """Convert a user-provided index into a linear position in storage.
 
         Args:
+        ----
             index: User-provided index (either an integer or sequence of integers)
 
         Returns:
+        -------
             int: Position in the underlying storage
 
         """
@@ -254,9 +267,11 @@ class TensorData:
         """Get value at the given index key.
 
         Args:
+        ----
             key: Index into tensor
 
         Returns:
+        -------
             float: Value at index
 
         """
@@ -267,6 +282,7 @@ class TensorData:
         """Set value at the given index key.
 
         Args:
+        ----
             key: Index into tensor
             val: Value to set at index
 
@@ -281,9 +297,11 @@ class TensorData:
         """Permute the dimensions of the tensor.
 
         Args:
+        ----
             *order: a permutation of the dimensions
 
         Returns:
+        -------
             New `TensorData` with the same storage and a new dimension order.
 
         """

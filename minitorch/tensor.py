@@ -197,9 +197,11 @@ class Tensor:
         """Create a tensor of zeros with an optional shape.
 
         Args:
+        ----
             shape (Optional[UserShape]): Shape of the tensor. Uses self.shape if None.
 
         Returns:
+        -------
             Tensor: A new tensor filled with zeros.
 
         """
@@ -251,7 +253,8 @@ class Tensor:
     def is_constant(self) -> bool:
         """Check if the tensor is a constant (no gradient tracking).
 
-        Returns:
+        Returns
+        -------
             bool: True if the tensor has no history (not tracking gradients)
 
         """
@@ -261,7 +264,8 @@ class Tensor:
     def parents(self) -> Iterable[Variable]:
         """Get the previous tensors that were used to compute this tensor.
 
-        Returns:
+        Returns
+        -------
             Iterable[Variable]: Previous tensors that were inputs to this tensor's computation
 
         """
@@ -272,9 +276,11 @@ class Tensor:
         """Apply the chain rule to compute gradients through this tensor.
 
         Args:
+        ----
             d_output: The gradient flowing backward from the output
 
         Returns:
+        -------
             List of (variable, gradient) pairs for each input to this tensor
 
         """
@@ -294,6 +300,7 @@ class Tensor:
         """Compute the gradient of the current tensor with respect to the graph.
 
         Args:
+        ----
             grad_output (Optional[Tensor]): The gradient flowing backward from the output.
                 If None, assumes
 
@@ -370,9 +377,11 @@ class Tensor:
         """Compute logical AND over the tensor dimensions.
 
         Args:
+        ----
             dim (Optional[int]): Dimension to reduce over. If None, reduces over all dimensions.
 
         Returns:
+        -------
             Tensor: Result of AND reduction
 
         """
@@ -385,9 +394,11 @@ class Tensor:
         """Check if tensor values are close to the values in tensor y.
 
         Args:
+        ----
             y (Tensor): Tensor to compare against
 
         Returns:
+        -------
             Tensor: Boolean tensor indicating where values are close
 
         """
@@ -396,7 +407,8 @@ class Tensor:
     def sigmoid(self) -> Tensor:
         """Apply the sigmoid function element-wise to the tensor.
 
-        Returns:
+        Returns
+        -------
             Tensor: Result of sigmoid activation
 
         """
